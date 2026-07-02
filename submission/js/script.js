@@ -23,3 +23,28 @@ let bannerCaption = document.querySelector("#bannerCaption");
 bannerImage.addEventListener("click", function () {
     bannerCaption.classList.toggle("show");
 });
+
+let orderInput = document.querySelector("#orderInput");
+let addOrderButton = document.querySelector("#orderForm button");
+let orderList = document.querySelector("#orderList");
+
+addOrderButton.addEventListener("click", event => {
+    event.preventDefault();
+
+    if (orderInput.value != "") {
+        let li = document.createElement("li");
+        let button = document.createElement("button");
+        li.textContent = orderInput.value;
+        button.textContent = "Delete";
+
+        button.addEventListener("click", event => {
+          li.remove();
+        });
+
+        li.appendChild(button);
+        orderList.appendChild(li);
+        orderInput.value = "";
+    } else {
+        alert("Please type a treat name in the textbox");
+    }
+});
