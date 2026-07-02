@@ -28,23 +28,57 @@ let orderInput = document.querySelector("#orderInput");
 let addOrderButton = document.querySelector("#orderForm button");
 let orderList = document.querySelector("#orderList");
 
+function addOrderItem(treatName) {
+    let li = document.createElement("li");
+    let textSpan = document.createElement("span");
+    let button = document.createElement("button");
+
+    textSpan.textContent = treatName;
+    button.textContent = "Delete";
+
+    button.addEventListener("click", event => {
+        li.remove();
+        saveOrderToStorage();
+    });
+
+    li.appendChild(textSpan);
+    li.appendChild(button);
+    orderList.appendChild(li);
+}
+
 addOrderButton.addEventListener("click", event => {
     event.preventDefault();
 
     if (orderInput.value != "") {
-        let li = document.createElement("li");
-        let button = document.createElement("button");
-        li.textContent = orderInput.value;
-        button.textContent = "Delete";
-
-        button.addEventListener("click", event => {
-          li.remove();
-        });
-
-        li.appendChild(button);
-        orderList.appendChild(li);
+        addOrderItem(orderInput.value);
+        saveOrderToStorage();
         orderInput.value = "";
     } else {
         alert("Please type a treat name in the textbox");
     }
 });
+
+function saveOrderToStorage() {
+    let items = document.querySelectorAll("#orderList li span");
+    let itemNames = [];
+
+    items.forEach(function (span) {
+        itemNames.push(span.textContent);
+    });
+
+    localStorage.setItem("orderList", JSON.stringify(itemNames));
+}
+
+function loadOrderFromStorage() {
+    let savedData = localStorage.getItem("orderList");
+
+    if (savedData !== null) {
+        let savedItems = JSON.parse(savedData);
+
+        savedItems.forEach(function (treatName) {
+            addOrderItem(treatName);
+        });
+    }
+}
+
+loadOrderFromStorage();
