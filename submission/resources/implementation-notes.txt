@@ -1,0 +1,44 @@
+Zahlika Treatz: CAT 2 Implementation Notes
+Student: Haffiz, Muzzammil Saleh Mohamed
+Course: BBIT 2B
+Adm No: 221670
+Assignment: CAT 2 – Vanilla JavaScript Upgrade
+
+
+Hello Mr.Wallace! For this assignment, I expanded on my Midterm project by adding interactive features using vanilla JavaScript. Below is a breakdown of how I implemented each requirement in javascript.
+
+1. Loop-rendered dynamic content
+Location: "Sweet Words From Our Customers" (#testimonials)
+
+I wanted the testimonials section to be easy to manage, so I used an array of objects to hold the name and quote data. Instead of hardcoding the HTML, I used a forEach() loop to iterate through the array. For each testimonial, I used document.createElement() to build the <li>, <h5>, and <p> tags, then put them into the #testimonialsList using appendChild().
+
+2. Dynamically add & remove elements
+Location: "Build Your Order" (#order-builder)
+
+To make the ordering process interactive, I created the addOrderItem() function. When a user types a treat name and clicks "Add," it creates a new list item with a "Delete" button attached. I added a click event listener to each Delete button so that if a user changes their mind, they can easily remove that specific item from the list using the remove() method and by clicking the delete btton next to the element.
+
+3. Form handling with validation feedback
+Location: "Request a Custom Cake Quote" (#custom-request)
+
+For this section, I handled validation entirely through javascript rather than relying on HTML attributes. I used event.preventDefault() to stop the form from refreshing the page after clicking the submit button. My function checks if the Name, Phone, or Details fields are empty. If any are missing, I push an error message into an array and display it in the #requestOutput div. If the requirements are met, the form shows a success message and clears itself.
+
+4. Persistent State with localStorage
+Location: "Build Your Order" (#order-builder)
+
+To make sure the user’s order items do not vanish if they accidentally refresh the page, I implemented localStorage. Every time an item is added or deleted, I pull the current list items into an array, convert it to a string, and save it. When the page loads, I use JSON.parse() to retrieve that data and display the list automatically.
+
+5. Click-to-reveal on your banner
+Location: "Our Signature Bake" (#logo)
+
+I added a click listener to the banner image that toggles a .show class on the caption div. I set up the CSS so that when the class is toggled, the caption fades in (opacity: 1) or out (opacity: 0). It’s a clean, simple way to make the site feel more responsive.
+
+Summary of Changes
+To pull this off, I made the following updates to my project files:
+
+index.html: Added the new sections (#order-builder where the user inputs elements, #custom-request where the user requests a custom cake or dessert, and #testimonials where the feedbacks are displayed from the array), updated the banner structure, and linked the new script before closing the </body> tag 
+
+css/styles.css: Added styling for the new sections and the toggle feature for the banner.
+
+js/script.js: Created a js file to accomodate all the javascript for the features listed above.
+
+Everything was built using pure, vanilla JavaScript.
