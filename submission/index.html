@@ -31,6 +31,7 @@
         <li><a href="#menu">Our Menu</a></li>
         <li><a href="#products">Price List</a></li>
         <li><a href="#order-builder">Order Builder</a></li>
+        <li><a href="#custom-request">Custom Quote</a></li>
         <li><a href="#testimonials">Feedback</a></li>
         <li><a href="#order">How To Order</a></li>
     </ul>
@@ -145,6 +146,21 @@
             </form>
 
             <ul id="orderList" class="dynamic-list"></ul>
+        </section>
+
+        <section id="custom-request">
+            <h2>Request a Custom Cake Quote</h2>
+            <p>Give us your custom details.</p>
+            <form id="customRequestForm">
+                <label for="requestName">Your Name:</label>
+                <input type="text" id="requestName" placeholder="Enter your name">
+                <label for="requestPhone">Phone Number:</label>
+                <input type="text" id="requestPhone" placeholder="e.g. 0712 345 678">
+                <label for="requestDetails">Tell us about your idea:</label>
+                <textarea id="requestDetails" rows="4" placeholder="Size, flavor, theme, colors, date needed..."></textarea>
+                <button type="submit">Send Request</button>
+            </form>
+            <div id="requestOutput" class="output-box">Your details will appear here.</div>
         </section>
 
         <section id="testimonials">

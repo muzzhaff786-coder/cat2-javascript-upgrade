@@ -82,3 +82,42 @@ function loadOrderFromStorage() {
 }
 
 loadOrderFromStorage();
+
+let customRequestForm = document.querySelector("#customRequestForm");
+let requestOutput = document.querySelector("#requestOutput");
+
+customRequestForm.addEventListener("submit", event => {
+    event.preventDefault();
+
+    let nameInput = document.querySelector("#requestName");
+    let phoneInput = document.querySelector("#requestPhone");
+    let detailsInput = document.querySelector("#requestDetails");
+
+    let name = nameInput.value;
+    let phone = phoneInput.value;
+    let details = detailsInput.value;
+
+    let problems = [];
+    if (name == "") {
+        problems.push("Name is required.");
+    }
+    if (phone == "") {
+        problems.push("Phone number is required.");
+    }
+    if (details == "") {
+        problems.push("Input the required details.");
+    }
+
+    if (problems.length > 0) {
+      requestOutput.innerHTML = "<b>Error: Could not send request.</b><br>" + problems.join(" ");
+    } else {
+      requestOutput.innerHTML = 
+        "<b>Thank you for your request, " + name + "!</b><br>" +
+        "<p>Phone: " + phone + "</p>" +
+        "<p>Details: " + details + "</p>";
+
+    nameInput.value = "";
+    phoneInput.value = "";
+    detailsInput.value = "";
+    }
+});
