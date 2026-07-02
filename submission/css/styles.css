@@ -385,3 +385,20 @@ footer a:hover {
         grid-template-columns: repeat(3, 1fr); 
     }
 }
+.banner-wrapper {
+    position: relative;
+}
+
+.banner-caption {
+    opacity: 0;
+}
+
+.banner-caption.show {
+    opacity: 1;
+}
+
+.banner-hint {
+    text-align: center;
+    color: var(--col-muted);
+    font-size: 0.9em;
+}
